@@ -2,28 +2,26 @@
 
 @see: https://docs.python.org/3/tutorial/controlflow.html
 
-The for statement in Python differs a bit from what you may be used to in C or Pascal.
-Rather than always iterating over an arithmetic progression of numbers (like in Pascal), or
-giving the user the ability to define both the iteration step and halting condition (as C),
-Python’s for statement iterates over the items of any sequence (a list or a string), in the
-order that they appear in the sequence. For example (no pun intended):
+Python 中的 for 语句与您可能在 C 或 Pascal 中使用的语句略有不同。
+Python 的 for 语句不是总是迭代数字的等差数列（如在 Pascal 中），也不是让用户能够定义迭代步骤和暂停条件（如 C），
+而是迭代任何序列（列表或一个字符串），按照它们在序列中出现的顺序。例如（没有双关语意）：
 """
 
 
 # pylint: disable=too-many-locals
 def test_for_statement():
-    """FOR statement"""
+    """FOR 语句"""
 
-    # Measure some strings:
+    # 测试一些字符串:
     words = ['cat', 'window', 'defenestrate']
     words_length = 0
 
     for word in words:
         words_length += len(word)
 
-    # "cat" length is 3
-    # "window" length is 6
-    # "defenestrate" length is 12
+    # "cat" 长度是 3
+    # "window" 长度是 6
+    # "defenestrate" 长度是 12
     assert words_length == (3 + 6 + 12)
 
     # If you need to modify the sequence you are iterating over while inside the loop
@@ -33,6 +31,8 @@ def test_for_statement():
     for word in words[:]:  # Loop over a slice copy of the entire list.
         if len(word) > 6:
             words.insert(0, word)
+
+    print(words)
 
     # Otherwise with for w in words:, the example would attempt to create an infinite list,
     # inserting defenestrate over and over again.

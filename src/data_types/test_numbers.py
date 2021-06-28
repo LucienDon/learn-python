@@ -1,9 +1,9 @@
-"""Numbers.
+"""数字.
 
 @see: https://docs.python.org/3/tutorial/introduction.html
 @see: https://www.w3schools.com/python/python_numbers.asp
 
-There are three numeric types in Python:
+Python中有三种数值类型:
 - int (e.g. 2, 4, 20)
     - bool (e.g. False and True, acting like 0 and 1)
 - float (e.g. 5.0, 1.6)
@@ -14,8 +14,7 @@ There are three numeric types in Python:
 def test_integer_numbers():
     """Integer type
 
-    Int, or integer, is a whole number, positive or negative,
-    without decimals, of unlimited length.
+    Int或integer是一个整数，无论正或负，没有小数，无限长.
     """
 
     positive_integer = 1
@@ -30,11 +29,9 @@ def test_integer_numbers():
 def test_booleans():
     """Boolean
 
-    Booleans represent the truth values False and True. The two objects representing the values
-    False and True are the only Boolean objects. The Boolean type is a subtype of the integer type,
-    and Boolean values behave like the values 0 and 1, respectively, in almost all contexts, the
-    exception being that when converted to a string, the strings "False" or "True" are returned,
-    respectively.
+   布尔值表示真值False和True。表示值的两个对象False和True是唯一的布尔对象。
+   布尔类型是整数类型的子类型，和布尔值的行为类似于值0和1，在几乎所有上下文中
+   例外是当转换为字符串时，返回字符串"False"或"True"
     """
 
     true_boolean = True
@@ -46,7 +43,7 @@ def test_booleans():
     assert isinstance(true_boolean, bool)
     assert isinstance(false_boolean, bool)
 
-    # Let's try to cast boolean to string.
+    # 让我们尝试将布尔类型转换为字符串。
     assert str(true_boolean) == "True"
     assert str(false_boolean) == "False"
 
@@ -54,12 +51,11 @@ def test_booleans():
 def test_float_numbers():
     """Float type
 
-    Float, or "floating point number" is a number, positive or negative,
-    containing one or more decimals.
+    浮点数，或“浮点数”是一个数，无论正或负，包含一个或多个小数的
     """
 
     float_number = 7.0
-    # Another way of declaring float is using float() function.
+    # 另一种声明浮点数的方法是使用float()函数。
     float_number_via_function = float(7)
     float_negative = -35.59
 
@@ -68,8 +64,7 @@ def test_float_numbers():
     assert isinstance(float_number_via_function, float)
     assert isinstance(float_negative, float)
 
-    # Float can also be scientific numbers with an "e" to indicate
-    # the power of 10.
+    # Float也可以是用“e”表示的科学数字 10 的幂。
     float_with_small_e = 35e3
     float_with_big_e = 12E4
 
@@ -80,7 +75,7 @@ def test_float_numbers():
 
 
 def test_complex_numbers():
-    """Complex Type"""
+    """复数型"""
 
     complex_number_1 = 5 + 6j
     complex_number_2 = 3 - 2j
@@ -91,30 +86,29 @@ def test_complex_numbers():
 
 
 def test_number_operators():
-    """Basic operations"""
+    """ 基本运算"""
 
-    # Addition.
+    #  加法.
     assert 2 + 4 == 6
 
-    # Multiplication.
+    #  乘法.
     assert 2 * 4 == 8
 
-    # Division always returns a floating point number.
+    # 除法总是返回浮点数.
     assert 12 / 3 == 4.0
     assert 12 / 5 == 2.4
     assert 17 / 3 == 5.666666666666667
 
-    # Modulo operator returns the remainder of the division.
+    # 取模运算符返回除法的余数.
     assert 12 % 3 == 0
     assert 13 % 3 == 1
 
-    # Floor division discards the fractional part.
+    # 除法向下取整摒弃了小数部分.
     assert 17 // 3 == 5
 
-    # Raising the number to specific power.
-    assert 5 ** 2 == 25  # 5 squared
-    assert 2 ** 7 == 128  # 2 to the power of 7
+    # 把数字提高到特定的幂。
+    assert 5 ** 2 == 25  # 5的平方
+    assert 2 ** 7 == 128  # 2的7次方
 
-    # There is full support for floating point; operators with
-    # mixed type operands convert the integer operand to floating point.
+    # 运算符与混合类型操作数将整数操作数转换为浮点数。
     assert 4 * 3.75 - 1 == 14.0

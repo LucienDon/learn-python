@@ -1,77 +1,69 @@
-"""Strings.
+"""字符串.
 
 @see: https://docs.python.org/3/tutorial/introduction.html
 @see: https://www.w3schools.com/python/python_strings.asp
 @see: https://www.w3schools.com/python/python_ref_string.asp
 
-Besides numbers, Python can also manipulate strings, which can be
-expressed in several ways. They can be enclosed in single quotes ('...')
-or double quotes ("...") with the same result.
+除了数字，Python还可以操作字符串，可以是
+用几种方式表达。它们可以用单引号括起来('…')
+或者双引号(“…”)，结果相同。
 """
 
 import pytest
 
 
 def test_string_type():
-    """String type"""
+    """字符串类型"""
 
-    # String with double quotes.
+    # 双引号字符串。
     name_1 = "John"
-    # String with single quotes.
+    # 带有单引号的字符串。
     name_2 = 'John'
-    # Strings created with different kind of quotes are treated the same.
+    # 使用不同类型的引号创建的字符串被视为相同的。
     assert name_1 == name_2
     assert isinstance(name_1, str)
     assert isinstance(name_2, str)
 
-    # \ can be used to escape quotes.
-    # use \' to escape the single quote or use double quotes instead.
+    # \ 可以用来转义引号。
+    # 使用\'转义单引号或使用双引号代替。
     single_quote_string = 'doesn\'t'
     double_quote_string = "doesn't"
 
     assert single_quote_string == double_quote_string
 
-    # \n means newline.
+    # \ n表示换行符。
     multiline_string = 'First line.\nSecond line.'
-    # Without print(), \n is included in the output.
-    # But with print(), \n produces a new line.
+    # 如果没有print()，输出中将包含\n。
+    # 但是使用print()， \n会产生一个新行。
     assert multiline_string == 'First line.\nSecond line.'
 
-    # Strings can be indexed, with the first character having index 0.
-    # There is no separate character type; a character is simply a string
-    # of size one. Note that since -0 is the same as 0, negative indices
-    # start from -1.
+    # 字符串可以被索引，第一个字符的索引为0。
+    # 没有单独的字符类型;一个字符就是一个字符串的大小。请注意，因为-0和0是相同的，所以负索引从1开始。
     word = 'Python'
-    assert word[0] == 'P'  # First character.
-    assert word[5] == 'n'  # Fifth character.
-    assert word[-1] == 'n'  # Last character.
-    assert word[-2] == 'o'  # Second-last character.
-    assert word[-6] == 'P'  # Sixth from the end or zeroth from the beginning.
+    assert word[0] == 'P'  # 首位字符
+    assert word[5] == 'n'  # 第 6个字符。
+    assert word[-1] == 'n'  # 最后一个字符.
+    assert word[-2] == 'o'  # 倒数第二个的字符。
+    assert word[-6] == 'P'  # 倒数第六个 或 正数第1个字符.
 
     assert isinstance(word[0], str)
 
-    # In addition to indexing, slicing is also supported. While indexing is
-    # used to obtain individual characters, slicing allows you to obtain
-    # substring:
-    assert word[0:2] == 'Py'  # Characters from position 0 (included) to 2 (excluded).
-    assert word[2:5] == 'tho'  # Characters from position 2 (included) to 5 (excluded).
+    # 除了索引之外，还支持切片. 虽然索引用来获取个别字符，切片可以让您获取子字符串:
+    assert word[0:2] == 'Py'  # 从位置0(包括)到位置2(不包括)的字符.
+    assert word[2:5] == 'tho'  # 位置2(包括)至位置5(不包括)的字符.
 
-    # Note how the start is always included, and the end always excluded.
-    # This makes sure that s[:i] + s[i:] is always equal to s:
+    # 注意开头总是包含在内，而结尾总是被排除在外.
+    # 这确保了s[:i] + s[i:]总是等于s:
     assert word[:2] + word[2:] == 'Python'
     assert word[:4] + word[4:] == 'Python'
 
-    # Slice indices have useful defaults; an omitted first index defaults to
-    # zero, an omitted second index defaults to the size of the string being
-    # sliced.
-    assert word[:2] == 'Py'  # Character from the beginning to position 2 (excluded).
-    assert word[4:] == 'on'  # Characters from position 4 (included) to the end.
-    assert word[-2:] == 'on'  # Characters from the second-last (included) to the end.
+    # 切片索引具有有用的缺省值; 省略的第一个索引默认为0，被省略的第二索引默认为字符串的大小切片.
+    assert word[:2] == 'Py'  # 字符从开始到位置2(不包括).
+    assert word[4:] == 'on'  # 从位置4(包括)到末尾的字符.
+    assert word[-2:] == 'on'  # 字符从倒数第二(包括)到结尾.
 
-    # One way to remember how slices work is to think of the indices as
-    # pointing between characters, with the left edge of the first character
-    # numbered 0. Then the right edge of the last character of a string of n
-    # characters has index n, for example:
+    # 记住切片是如何工作的一种方法是把指标看作指向字符之间的，具有第一个字符的左边缘的
+    # 编号0. 然后是字符串n的最后一个字符的右边缘例如，字符的索引为n:
     #
     # +---+---+---+---+---+---+
     #  | P | y | t | h | o | n |

@@ -1,37 +1,35 @@
-# What is Python
+# 什么是 Python
 
-Python is a popular programming language. It was created in 1991 by Guido van Rossum.
+Python是一种流行的编程语言。它是由Guido van Rossum在1991年创建的。
 
-Python is an easy to learn, powerful programming language. It has efficient high-level data structures and a simple but effective approach to object-oriented programming. Python’s elegant syntax and dynamic typing, together with its interpreted nature, make it an ideal language for scripting and rapid application development in many areas on most platforms.
+Python是一种易于学习、功能强大的编程语言。它具有高效的高级数据结构和简单但有效的面向对象编程方法。Python优雅的语法和动态类型，加上它的解释性质，使它成为大多数平台上许多领域的脚本编写和快速应用程序开发的理想语言。
 
-It is used for:
+它用于:
 
-- web development (server-side),
-- software development,
-- mathematics,
-- system scripting.
+- web开发(服务器端)，
+- 软件开发,
+- 数学
+- 系统脚本。
 
-## What can Python do?
+## Python能做什么?
 
-- Python can be used on a server to create web applications.
-- Python can be used alongside software to create workflows.
-- Python can connect to database systems. It can also read and modify files.
-- Python can be used to handle big data and perform complex mathematics.
-- Python can be used for rapid prototyping, or for production-ready software development.
+- Python可以在服务器上创建web应用。
+- Python可以与软件一起使用来创建工作流。
+- Python可以连接数据库系统。它还可以读取和修改文件。
+- Python可以用来处理大数据和执行复杂的数学。
+- Python可用于快速原型，或用于生产就绪软件开发。
 
-## Why Python?
+## 为什么选择 Python ?
 
-- Python works on different platforms (Windows, Mac, Linux, Raspberry Pi, etc).
-- Python has a simple syntax similar to the English language.
-- Python has syntax that allows developers to write programs with fewer lines than some other programming languages.
-- Python runs on an interpreter system, meaning that code can be executed as soon as it is written. This means that prototyping can be very quick.
-- Python can be treated in a procedural way, an object-orientated way or a functional way.
-
+- Python可以在不同的平台上工作(Windows, Mac, Linux，树莓派等)。
+- Python具有类似于英语的简单语法。
+- Python的语法允许开发者用比其他编程语言更少的行来编写程序。
+- Python运行在解释器系统上，这意味着代码一旦写好就可以被执行。这意味着原型制作可以非常快速。
+- Python可以以过程方式、面向对象方式或函数方式来处理。
 ## Good to know
 
-- The most recent major version of Python is Python 3, which we shall be using in this tutorial. However, Python 2, although not being updated with anything other than security updates, is still quite popular.
-- In this tutorial Python will be written in a text editor. It is possible to write Python in an Integrated Development Environment, such as Thonny, Pycharm, Netbeans or Eclipse which are particularly useful when managing larger collections of Python files.
-
+- Python最新的主要版本是Python 3，我们将在本教程中使用它。然而，Python 2，尽管除了安全更新之外没有任何更新，但仍然相当流行。
+- 在本教程中，Python将使用文本编辑器编写。可以在集成开发环境中编写Python，如thony、Pycharm、Netbeans或Eclipse，这些在管理更大的Python文件集合时特别有用。
 ## References
 
 - [w3schools.com](https://www.w3schools.com/python/python_intro.asp)

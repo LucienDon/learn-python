@@ -1,25 +1,25 @@
-"""Membership operators
+"""成员运算符
 
 @see: https://www.w3schools.com/python/python_operators.asp
 
-Membership operators are used to test if a sequence is presented in an object.
+成员运算符用于测试一个序列是否出现在一个对象中。
 """
 
 
 def test_membership_operators():
-    """Membership operators"""
+    """成员运算符"""
 
-    # Let's use the following fruit list to illustrate membership concept.
+    # 让我们使用下面的水果列表来说明成员概念。
     fruit_list = ["apple", "banana"]
 
     # in
-    # Returns True if a sequence with the specified value is present in the object.
+    # 如果对象中存在具有指定值的序列，则返回True。
 
-    # Returns True because a sequence with the value "banana" is in the list
+    # 返回True，因为列表中有一个值为“banana”的序列
     assert "banana" in fruit_list
 
     # not in
-    # Returns True if a sequence with the specified value is not present in the object
+    # 如果对象中不存在具有指定值的序列，则返回True
 
-    # Returns True because a sequence with the value "pineapple" is not in the list.
+    # 返回True，因为值为"pineapple"的序列不在列表中。
     assert "pineapple" not in fruit_list
