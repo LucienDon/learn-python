@@ -1,26 +1,24 @@
-"""CONTINUE statement
+"""continue 语句
 
 @see: https://docs.python.org/3/tutorial/controlflow.html
 
-The continue statement is borrowed from C, continues with the next iteration of the loop.
+continue 语句借用自C语言，继续循环的下一个迭代。
 """
 
 
 def test_continue_statement():
-    """CONTINUE statement in FOR loop"""
+    """FOR 环中的 CONTINUE 语句"""
 
-    # Let's
-
-    # This list will contain only even numbers from the range.
+    # 这个列表将只包含范围中的偶数。
     even_numbers = []
-    # This list will contain every other numbers (in this case - ods).
+    # 这个列表将包含所有其他数字(在本例中是ods)。
     rest_of_the_numbers = []
 
     for number in range(0, 10):
-        # Check if remainder after division is zero (which would mean that number is even).
+        # 检查除法后余数是否为零(这意味着该数是偶数)。
         if number % 2 == 0:
             even_numbers.append(number)
-            # Stop current loop iteration and go to the next one immediately.
+            # 停止当前循环迭代并立即转到下一个。
             continue
 
         rest_of_the_numbers.append(number)

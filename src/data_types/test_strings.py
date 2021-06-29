@@ -71,34 +71,32 @@ def test_string_type():
     #  0   1   2   3   4   5   6
     # -6  -5  -4  -3  -2  -1
 
-    # Attempting to use an index that is too large will result in an error.
+    # 试图使用一个太大的索引将导致一个错误。
     with pytest.raises(Exception):
         not_existing_character = word[42]
         assert not not_existing_character
 
-    # However, out of range slice indexes are handled gracefully when used
-    # for slicing:
+    # 但是，在使用范围外的片索引时，使用切片会得到很好的处理:
     assert word[4:42] == 'on'
     assert word[42:] == ''
 
-    # Python strings cannot be changed — they are immutable. Therefore,
-    # assigning to an indexed position in the string
-    # results in an error:
+    # Python字符串不能被改变——它们是不可变的。因此，对字符串中的索引位置赋值会导致错误:
     with pytest.raises(Exception):
         # pylint: disable=unsupported-assignment-operation
         word[0] = 'J'
 
-    # If you need a different string, you should create a new one:
+    # 如果您需要一个不同的字符串，您应该创建一个新的:
     assert 'J' + word[1:] == 'Jython'
     assert word[:2] + 'py' == 'Pypy'
 
-    # The built-in function len() returns the length of a string:
+    # 内置函数len()返回字符串的长度:
     characters = 'supercalifragilisticexpialidocious'
     assert len(characters) == 34
 
-    # String literals can span multiple lines. One way is using triple-quotes: """..."""
-    # or '''...'''. End of lines are automatically included in the string, but it’s possible
-    # to prevent this by adding a \ at the end of the line. The following example:
+    # 字符串字面值可以跨多行。一种方法是使用三引号: """...""" 或 '''...'''.
+    # 字符串中自动包含行结束符，但可以通过在行结束符中添加\来防止这种情况。
+    #
+    # 下面的例子:
     multi_line_string = '''\
         First line
         Second line
@@ -111,119 +109,111 @@ def test_string_type():
 
 
 def test_string_operators():
-    """Basic operations
+    """ 基本运算
 
-    Strings can be concatenated (glued together) with the + operator,
-    and repeated with *: 3 times 'un', followed by 'ium'
+    字符串可以用 + 操作符连接(粘在一起)，并用 * 重复连接3次 'un'，接着是'ium'
     """
 
     assert 3 * 'un' + 'ium' == 'unununium'
 
     # 'Py' 'thon'
-    python = 'Py' 'thon'
+    python = 'Py''thon'
     assert python == 'Python'
 
-    # This feature is particularly useful when you want to break long strings:
+    # 当您想要中断长字符串时，这个特性特别有用:
     text = (
         'Put several strings within parentheses '
         'to have them joined together.'
     )
     assert text == 'Put several strings within parentheses to have them joined together.'
 
-    # If you want to concatenate variables or a variable and a literal, use +:
+    # 如果你想要连接变量或者一个变量和一个字面值，使用+:
     prefix = 'Py'
     assert prefix + 'thon' == 'Python'
 
 
 def test_string_methods():
-    """String methods"""
+    """字符串的方法"""
 
     hello_world_string = "Hello, World!"
 
-    # The strip() method removes any whitespace from the beginning or the end.
+    # strip()方法从开头或结尾删除任何空格.
     string_with_whitespaces = " Hello, World! "
     assert string_with_whitespaces.strip() == "Hello, World!"
 
-    # The len() method returns the length of a string.
+    # len()方法返回字符串的长度.
     assert len(hello_world_string) == 13
 
-    # The lower() method returns the string in lower case.
+    # lower()方法返回小写的字符串.
     assert hello_world_string.lower() == 'hello, world!'
 
-    # The upper() method returns the string in upper case.
+    # upper()方法以大写形式返回字符串.
     assert hello_world_string.upper() == 'HELLO, WORLD!'
 
-    # The replace() method replaces a string with another string.
+    # replace()方法将一个字符串替换为另一个字符串.
     assert hello_world_string.replace('H', 'J') == 'Jello, World!'
 
-    # The split() method splits the string into substrings if it finds instances of the separator.
+    # 如果找到分隔符实例，split()方法将字符串分割成子字符串.
     assert hello_world_string.split(',') == ['Hello', ' World!']
 
-    # Converts the first character to upper case
+    # 将第一个字符转换为大写
     assert 'low letter at the beginning'.capitalize() == 'Low letter at the beginning'
 
-    # Returns the number of times a specified value occurs in a string.
+    # 返回指定值在字符串中出现的次数.
     assert 'low letter at the beginning'.count('t') == 4
 
-    # Searches the string for a specified value and returns the position of where it was found.
+    # 在字符串中搜索指定的值并返回找到它的位置.
     assert 'Hello, welcome to my world'.find('welcome') == 7
 
-    # Converts the first character of each word to upper case
+    # 将每个单词的第一个字符转换为大写
     assert 'Welcome to my world'.title() == 'Welcome To My World'
 
-    # Returns a string where a specified value is replaced with a specified value.
+    # 返回一个字符串，其中指定的值被替换为指定的值。
     assert 'I like bananas'.replace('bananas', 'apples') == 'I like apples'
 
-    # Joins the elements of an iterable to the end of the string.
+    # 将可迭代对象的元素连接到字符串的末尾.
     my_tuple = ('John', 'Peter', 'Vicky')
     assert ', '.join(my_tuple) == 'John, Peter, Vicky'
 
-    # Returns True if all characters in the string are upper case.
+    # 如果字符串中的所有字符都是大写，则返回True.
     assert 'ABC'.isupper()
     assert not 'AbC'.isupper()
 
-    # Check if all the characters in the text are letters.
+    # 检查文本中的所有字符是否都是字母.
     assert 'CompanyX'.isalpha()
     assert not 'Company 23'.isalpha()
 
-    # Returns True if all characters in the string are decimals.
+    # 如果字符串中的所有字符都是数字，则返回True.
     assert '1234'.isdecimal()
     assert not 'a21453'.isdecimal()
 
 
 def test_string_formatting():
-    """String formatting.
+    """字符串格式化.
 
-    Often you’ll want more control over the formatting of your output than simply printing
-    space-separated values. There are several ways to format output
+    通常情况下，比起简单地打印，您希望对输出的格式有更多的控制空格分隔的值。有几种方法可以格式化输出
     """
 
-    # To use formatted string literals, begin a string with f or F before the opening quotation
-    # mark or triple quotation mark. Inside this string, you can write a Python expression
-    # between { and } characters that can refer to variables or literal values.
+    # 若要使用格式化字符串字面值，请在字符串的开始引号或三引号之前以 F 或 f 开头。
+    # 在这个字符串内部，你可以在 { and } 字符之间编写一个 Python 表达式，它可以引用变量或文字值。
     year = 2018
     event = 'conference'
 
     assert f'Results of the {year} {event}' == 'Results of the 2018 conference'
 
-    # The str.format() method of strings requires more manual effort. You’ll still use { and } to
-    # mark where a variable will be substituted and can provide detailed formatting directives,
-    # but you’ll also need to provide the information to be formatted.
-    yes_votes = 42_572_654  # equivalent of 42572654
-    no_votes = 43_132_495   # equivalent of 43132495
+    # 字符串的str.format()方法需要更多的手动操作。 您仍将使用{ and }来标记变量将被替换的位置，并可以提供详细的格式化指令,
+    # 但是您还需要提供要格式化的信息。
+    yes_votes = 42_572_654  # 相当于 42572654
+    no_votes = 43_132_495  # 相当于 43132495
     percentage = yes_votes / (yes_votes + no_votes)
 
     assert '{:-9} YES votes  {:2.2%}'.format(yes_votes, percentage) == ' 42572654 YES votes  49.67%'
 
-    # When you don’t need fancy output but just want a quick display of some variables for debugging
-    # purposes, you can convert any value to a string with the repr() or str() functions. The str()
-    # function is meant to return representations of values which are fairly human-readable, while
-    # repr() is meant to generate representations which can be read by the interpreter (or will
-    # force a SyntaxError if there is no equivalent syntax). For objects which don’t have a
-    # particular representation for human consumption, str() will return the same value as repr().
-    # Many values, such as numbers or structures like lists and dictionaries, have the same
-    # representation using either function. Strings, in particular, have two distinct
-    # representations.
+    # 当您不需要花哨的输出，而只想快速显示一些用于调试的变量时，可以使用repr()或str()函数将任何值转换为字符串。
+    # str()函数的目的是返回值的表示，这些值是相当可读的， 而 repr() 的目的是生成解释器可以读取的表示(或者如果没有等效的语法，将强制SyntaxError)。
+    # 对于没有特定表示供人类使用的对象，str()将返回与repr()相同的值。.
+    # 许多值，如数字或像列表和字典这样的结构，使用这两个函数都有相同的表示。
+    # 特别是字符串，有两种不同的表示形式。
 
     greeting = 'Hello, world.'
     first_num = 10 * 3.25
@@ -231,24 +221,19 @@ def test_string_formatting():
 
     assert str(greeting) == 'Hello, world.'
     assert repr(greeting) == "'Hello, world.'"
-    assert str(1/7) == '0.14285714285714285'
+    assert str(1 / 7) == '0.14285714285714285'
 
-    # The argument to repr() may be any Python object:
+    # repr()的参数可以是任何Python对象:
     assert repr((first_num, second_num, ('spam', 'eggs'))) == "(32.5, 40000, ('spam', 'eggs'))"
 
-    # Formatted String Literals
+    # 格式化的字符串
 
-    # Formatted string literals (also called f-strings for short) let you include the value of
-    # Python expressions inside a string by prefixing the string with f or F and writing
-    # expressions as {expression}.
-
-    # An optional format specifier can follow the expression. This allows greater control over how
-    # the value is formatted. The following example rounds pi to three places after the decimal.
+    # 格式化字符串字面值(也简称f-strings)可以让你在字符串前加上f或f，并将表达式写成{expression}，从而将 Python 表达式的值包含在字符串中。
+    # 表达式后面可以有一个可选的格式说明符. 这允许对如何格式化值进行更大的控制. 下面的示例将圆周率四舍五入到小数点后三位。
     pi_value = 3.14159
     assert f'The value of pi is {pi_value:.3f}.' == 'The value of pi is 3.142.'
 
-    # Passing an integer after the ':' will cause that field to be a minimum number of characters
-    # wide. This is useful for making columns line up:
+    # 在':'后面传递一个整数将使该字段成为最小字符数宽。 这对于使列对齐很有用:
     table_data = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 7678}
     table_string = ''
     for name, phone in table_data.items():
@@ -258,19 +243,17 @@ def test_string_formatting():
                             'Jack   ==>   4098'
                             'Dcab   ==>   7678')
 
-    # The String format() Method
+    # String format()方法
 
-    # Basic usage of the str.format() method looks like this:
+    # str.format()方法的基本用法如下:
     assert 'We are {} who say "{}!"'.format('knights', 'Ni') == 'We are knights who say "Ni!"'
 
-    # The brackets and characters within them (called format fields) are replaced with the objects
-    # passed into the str.format() method. A number in the brackets can be used to refer to the
-    # position of the object passed into the str.format() method
+    # 方括号和其中的字符(称为格式字段)被传递到str.format()方法中的对象替换。
+    # 括号中的数字可以用来引用传递给str.format()方法的对象的位置
     assert '{0} and {1}'.format('spam', 'eggs') == 'spam and eggs'
     assert '{1} and {0}'.format('spam', 'eggs') == 'eggs and spam'
 
-    # If keyword arguments are used in the str.format() method, their values are referred to by
-    # using the name of the argument.
+    # 如果关键字参数在str.format()方法中使用，则通过参数的名称引用它们的值。
     formatted_string = 'This {food} is {adjective}.'.format(
         food='spam',
         adjective='absolutely horrible'
@@ -278,7 +261,7 @@ def test_string_formatting():
 
     assert formatted_string == 'This spam is absolutely horrible.'
 
-    # Positional and keyword arguments can be arbitrarily combined
+    # 位置参数和关键字参数可以任意组合
     formatted_string = 'The story of {0}, {1}, and {other}.'.format(
         'Bill',
         'Manfred',
@@ -287,16 +270,15 @@ def test_string_formatting():
 
     assert formatted_string == 'The story of Bill, Manfred, and Georg.'
 
-    # If you have a really long format string that you don’t want to split up, it would be nice if
-    # you could reference the variables to be formatted by name instead of by position. This can be
-    # done by simply passing the dict and using square brackets '[]' to access the keys
+    # 如果你有一个很长的格式字符串，你不想拆分，如果你可以引用变量的名称，而不是位置。
+    # 这可以通过简单地传递字典并使用方括号'[]'来访问键来实现
 
     table = {'Sjoerd': 4127, 'Jack': 4098, 'Dcab': 8637678}
     formatted_string = 'Jack: {0[Jack]:d}; Sjoerd: {0[Sjoerd]:d}; Dcab: {0[Dcab]:d}'.format(table)
 
     assert formatted_string == 'Jack: 4098; Sjoerd: 4127; Dcab: 8637678'
 
-    # This could also be done by passing the table as keyword arguments with the ‘**’ notation.
+    # 这也可以通过使用“**”作为关键字参数传递表来实现。
     formatted_string = 'Jack: {Jack:d}; Sjoerd: {Sjoerd:d}; Dcab: {Dcab:d}'.format(**table)
 
     assert formatted_string == 'Jack: 4098; Sjoerd: 4127; Dcab: 8637678'

@@ -1,28 +1,26 @@
-"""Unpacking Argument Lists
+"""拆包参数列表
 
 @see: https://docs.python.org/3/tutorial/controlflow.html#unpacking-argument-lists
 
-Unpacking arguments may be executed via * and ** operators. See below for further details.
+解包参数可以通过和操作符执行。详情见下文。
 """
 
 
 def test_function_unpacking_arguments():
-    """Unpacking Argument Lists"""
+    """拆包参数列表"""
 
-    # The situation may occur when the arguments are already in a list or tuple but need to be
-    # unpacked for a function call requiring separate positional arguments. For instance, the
-    # built-in range() function expects separate start and stop arguments. If they are not
-    # available separately, write the function call with the *-operator to unpack the arguments out
-    # of a list or tuple:
+    # 当参数已经在列表或元组中，但需要为需要单独位置参数的函数调用解包时，可能会出现这种情况。
+    # 例如，内置的range()函数需要单独的start和stop参数。如果它们不能单独使用，
+    # 则使用 *-operator 编写函数调用，将参数从列表或元组中解包:
 
-    # Normal call with separate arguments:
+    # 带有不同参数的普通调用:
     assert list(range(3, 6)) == [3, 4, 5]
 
-    # Call with arguments unpacked from a list.
+    # 使用从列表中解包的参数调用。
     arguments_list = [3, 6]
     assert list(range(*arguments_list)) == [3, 4, 5]
 
-    # In the same fashion, dictionaries can deliver keyword arguments with the **-operator:
+    # 以同样的方式，字典可以使用 **-operator:
     def function_that_receives_names_arguments(first_word, second_word):
         return first_word + ', ' + second_word + '!'
 

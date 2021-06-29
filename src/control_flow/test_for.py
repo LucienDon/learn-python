@@ -24,23 +24,18 @@ def test_for_statement():
     # "defenestrate" 长度是 12
     assert words_length == (3 + 6 + 12)
 
-    # If you need to modify the sequence you are iterating over while inside the loop
-    # (for example to duplicate selected items), it is recommended that you first make a copy.
-    # Iterating over a sequence does not implicitly make a copy. The slice notation makes this
-    # especially convenient:
-    for word in words[:]:  # Loop over a slice copy of the entire list.
+    # 如果您需要修改在循环内部迭代的序列 (例如，复制选定项),建议您先复印一份。
+    # 在序列上迭代不会隐式地生成副本。 切片表示法使得这特别方便:
+    for word in words[:]:  # 循环遍历整个列表的切片副本。
         if len(word) > 6:
             words.insert(0, word)
 
-    print(words)
-
-    # Otherwise with for w in words:, the example would attempt to create an infinite list,
-    # inserting defenestrate over and over again.
+    # 否则，这个例子将尝试创建一个无限列表，并反复插入defenestrate。
 
     assert words == ['defenestrate', 'cat', 'window', 'defenestrate']
 
-    # If you do need to iterate over a sequence of numbers, the built-in function range() comes in
-    # handy. It generates arithmetic progressions:
+    # 如果确实需要迭代一个数字序列，那么内置函数 range() 可以派上用场。
+    # 它生成等差级数:
     iterated_numbers = []
 
     for number in range(5):
@@ -48,7 +43,7 @@ def test_for_statement():
 
     assert iterated_numbers == [0, 1, 2, 3, 4]
 
-    # To iterate over the indices of a sequence, you can combine range() and len() as follows:
+    # 要遍历序列的索引，你可以组合 range() 和 len() 如下:
     words = ['Mary', 'had', 'a', 'little', 'lamb']
     concatenated_string = ''
 
@@ -58,7 +53,7 @@ def test_for_statement():
 
     assert concatenated_string == 'Mary had a little lamb '
 
-    # Or simply use enumerate().
+    # 或者简单地使用 enumerate()。
     concatenated_string = ''
 
     for word_index, word in enumerate(words):
@@ -66,8 +61,7 @@ def test_for_statement():
 
     assert concatenated_string == 'Mary had a little lamb '
 
-    # When looping through dictionaries, the key and corresponding value can be retrieved at the
-    # same time using the items() method.
+    # 在遍历字典时，可以使用 items() 方法同时检索键和相应的值。
     knights_names = []
     knights_properties = []
 
@@ -79,8 +73,7 @@ def test_for_statement():
     assert knights_names == ['gallahad', 'robin']
     assert knights_properties == ['the pure', 'the brave']
 
-    # When looping through a sequence, the position index and corresponding value can be retrieved
-    # at the same time using the enumerate() function
+    # 当循环遍历一个序列时，可以使用 enumerate() 函数同时检索位置索引和相应的值
     indices = []
     values = []
     for index, value in enumerate(['tic', 'tac', 'toe']):
@@ -90,8 +83,7 @@ def test_for_statement():
     assert indices == [0, 1, 2]
     assert values == ['tic', 'tac', 'toe']
 
-    # To loop over two or more sequences at the same time, the entries can be paired with
-    # the zip() function.
+    # 要同时循环两个或多个序列，可以将条目与 zip() 函数配对。
     questions = ['name', 'quest', 'favorite color']
     answers = ['lancelot', 'the holy grail', 'blue']
     combinations = []
@@ -109,25 +101,20 @@ def test_for_statement():
 def test_range_function():
     """Range function
 
-    If you do need to iterate over a sequence of numbers, the built-in function range() comes in
-    handy. It generates arithmetic progressions.
+    如果确实需要迭代一个数字序列，那么内置函数 range() 可以派上用场。
+    它产生等差级数。
 
-    In many ways the object returned by range() behaves as if it is a list, but in fact it isn’t.
-    It is an object which returns the successive items of the desired sequence when you iterate
-    over it, but it doesn’t really make the list, thus saving space.
+    range() 返回的对象在很多方面都表现得像一个列表，但实际上它不是。
+    它是一个在迭代时返回所需序列的连续项的对象，但它并不真正构成列表，因此节省了空间。
 
-    We say such an object is iterable, that is, suitable as a target for functions and constructs
-    that expect something from which they can obtain successive items until the supply is exhausted.
-    We have seen that the for statement is such an iterator. The function list() is another; it
-    creates lists from iterables:
+    我们说这样的对象是可迭代的，也就是说，适合作为函数和构造的目标他们期望能得到一些连续的东西，直到供应耗尽。
+    我们已经看到for语句就是这样一个迭代器。函数list()是另一个; 它从可迭代对象中创建列表:
     """
 
     assert list(range(5)) == [0, 1, 2, 3, 4]
 
-    # The given end point is never part of the generated sequence; range(10) generates 10 values,
-    # the legal indices for items of a sequence of length 10. It is possible to let the range start
-    # at another number, or to specify a different increment (even negative; sometimes this is
-    # called the ‘step’):
+    # 给定的终点从来不是生成序列的一部分; range(10) 生成10个值，即长度为10的序列的合法索引。
+    # 可以让范围从另一个数字开始，或指定不同的增量 (甚至负数; 有时这被称为‘step’):
 
     assert list(range(5, 10)) == [5, 6, 7, 8, 9]
     assert list(range(0, 10, 3)) == [0, 3, 6, 9]

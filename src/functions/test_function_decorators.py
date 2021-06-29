@@ -1,43 +1,49 @@
-"""Function Decorators.
+"""函数修饰符。
 
 @see: https://www.thecodeship.com/patterns/guide-to-python-function-decorators/
 
-Function decorators are simply wrappers to existing functions. In the context of design patterns,
-decorators dynamically alter the functionality of a function, method or class without having to
-directly use subclasses. This is ideal when you need to extend the functionality of functions that
-you don't want to modify. We can implement the decorator pattern anywhere, but Python facilitates
-the implementation by providing much more expressive features and syntax for that.
+函数装饰器只是现有函数的包装器。
+在设计模式的上下文中，装饰器动态地改变函数、方法或类的功能，而不必直接使用子类。
+当您需要扩展不想修改的函数的功能时，这是理想的。
+我们可以在任何地方实现装饰器模式，但 Python 通过提供更具表达性的特性和语法来促进实现。
 """
 
 
 def test_function_decorators():
-    """Function Decorators."""
+    """函数修饰符。"""
 
-    # Function decorators are simply wrappers to existing functions. Putting the ideas mentioned
-    # above together, we can build a decorator. In this example let's consider a function that
-    # wraps the string output of another function by p tags.
+    # 函数装饰器只是现有函数的包装器。把上面提到的想法放在一起，我们就可以建立一个装饰。
+    # 在本例中，让我们考虑一个函数，它通过 p 标记包装另一个函数的字符串输出。
 
-    # This is the function that we want to decorate.
+    # 这就是我们想要装饰的功能。
     def greeting(name):
         return "Hello, {0}!".format(name)
 
-    # This function decorates another functions output with <p> tag.
+    # 这个函数用 <p> 标记修饰了另一个函数的输出。
     def decorate_with_p(func):
         def function_wrapper(name):
             return "<p>{0}</p>".format(func(name))
+
         return function_wrapper
 
-    # Now, let's call our decorator and pass the function we want decorate to it.
+    # 现在，让我们调用装饰器，并将我们想要装饰的函数传递给它。
     my_get_text = decorate_with_p(greeting)
 
-    # Here we go, we've just decorated the function output without changing the function itself.
+    # 开始吧，我们只是修饰了函数的输出，而没有改变函数本身。
+    # 执行过程：
+    # my_get_text('John')
+    # -> decorate_with_p(greeting('John'))
+    # -> function_wrapper('John')
+    # -> "<p>{0}</p>".format(greeting('John'))
+    # -> "<p>{0}</p>".format("Hello, {0}!".format('John'))
+    # -> '<p>Hello, John!</p>'
+
     assert my_get_text('John') == '<p>Hello, John!</p>'  # With decorator.
     assert greeting('John') == 'Hello, John!'  # Without decorator.
 
-    # Now, Python makes creating and using decorators a bit cleaner and nicer for the programmer
-    # through some syntactic sugar  There is a neat shortcut for that, which is to mention the
-    # name of the decorating function before the function to be decorated. The name of the
-    # decorator should be prepended with an @ symbol.
+    # 现在，Python通过一些语法上的“糖果”让程序员创建和使用装饰器变得更干净、更好。
+    # 对此，有一个简洁的快捷方式，就是在要装饰的函数之前提到装饰函数的名称。
+    # 装饰器的名称应该以@符号作为前缀。
 
     @decorate_with_p
     def greeting_with_p(name):
@@ -45,19 +51,17 @@ def test_function_decorators():
 
     assert greeting_with_p('John') == '<p>Hello, John!</p>'
 
-    # Now let's consider we wanted to decorate our greeting function by one more functions to wrap a
-    # div the string output.
+    # 现在，让我们考虑一下，我们想要通过多一个函数来装饰我们的greeting函数，以包装字符串输出的div。
 
-    # This will be our second decorator.
+    # 这是我们的第二个装饰器。
     def decorate_with_div(func):
         def function_wrapper(text):
             return "<div>{0}</div>".format(func(text))
         return function_wrapper
 
-    # With the basic approach, decorating get_text would be along the lines of
-    # greeting_with_div_p = decorate_with_div(decorate_with_p(greeting_with_p))
+    # 对于基本方法，装饰 get_text 将沿着 greeting_with_div_p = decorate_with_div(decorate_with_p(greeting_with_p)) 的思路进行
 
-    # With Python's decorator syntax, same thing can be achieved with much more expressive power.
+    # 使用Python的装饰器语法，同样的事情可以以更强大的表达能力实现。
     @decorate_with_div
     @decorate_with_p
     def greeting_with_div_p(name):
@@ -65,22 +69,23 @@ def test_function_decorators():
 
     assert greeting_with_div_p('John') == '<div><p>Hello, John!</p></div>'
 
-    # One important thing to notice here is that the order of setting our decorators matters.
-    # If the order was different in the example above, the output would have been different.
+    # 这里需要注意的重要一点是，设置装饰器的顺序很重要。
+    # 如果上面例子中的顺序不同，输出就会不同。
 
-    # Passing arguments to decorators.
+    # 向装饰器传递参数。
 
-    # Looking back at the example before, you can notice how redundant the decorators in the
-    # example are. 2 decorators(decorate_with_div, decorate_with_p) each with the same
-    # functionality but wrapping the string with different tags. We can definitely do much better
-    # than that. Why not have a more general implementation for one that takes the tag to wrap
-    # with as a string? Yes please!
+    # 回顾前面的示例，您可以注意到示例中的装饰器有多冗余。
+    # 2个装饰器(decorate_with_div, decorate_with_p)都具有相同的功能，但使用不同的标签包装字符串。
+    # 我们绝对可以做得更好。 为什么不提供一个更通用的实现，将标签作为字符串进行包装呢?
+    # 是的,请!
 
     def tags(tag_name):
         def tags_decorator(func):
             def func_wrapper(name):
                 return "<{0}>{1}</{0}>".format(tag_name, func(name))
+
             return func_wrapper
+
         return tags_decorator
 
     @tags('div')

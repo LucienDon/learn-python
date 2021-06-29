@@ -72,7 +72,7 @@ def test_list_type():
     - [元组](src/data_types/test_tuples.py)
     - [集合](src/data_types/test_sets.py)及其方法
     - [字典](src/data_types/test_dictionaries.py)
-    - [Type Casting](src/data_types/test_type_casting.py)
+    - [类型转换](src/data_types/test_type_casting.py)
 4. **控制**
     - [if](src/control_flow/test_if.py)
     - [for](src/control_flow/test_for.py) (以及 `range()` 函数)

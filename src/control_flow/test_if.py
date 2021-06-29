@@ -1,12 +1,11 @@
-"""IF statement
+"""IF 语句
 
 @see: https://docs.python.org/3/tutorial/controlflow.html
 
-There can be zero or more elif parts, and the else part is optional. The keyword ‘elif’ is
-short for ‘else if’, and is useful to avoid excessive indentation.
+可以有零个或多个elif部分，else部分是可选的。
+关键字' elif '是' else if '的缩写，用于避免过度缩进。
 
-An if … elif … elif … sequence is a substitute for the switch or case statements found
-in other languages.
+在其他语言中 switch ... case 语句是 if … elif … elif … 替代品
 """
 
 
