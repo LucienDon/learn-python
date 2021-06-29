@@ -1,4 +1,4 @@
-# 学习 Python 的游乐场（playground）和备忘单（cheatsheet）
+# Python 学习笔记
 
 [![Build Status](https://travis-ci.org/trekhleb/learn-python.svg?branch=master)](https://travis-ci.org/trekhleb/learn-python)
 
