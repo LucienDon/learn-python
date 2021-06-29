@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/trekhleb/learn-python.svg?branch=master)](https://travis-ci.org/trekhleb/learn-python)
 
-> 这是 Python 脚本的集合，按 [主题]（目录）划分，包含带有解释的代码示例、不同的用例和进一步阅读的链接。
+> 这是 Python 脚本的集合，按 [目录](#目录)划分，包含带有解释的代码示例、不同的用例和进一步阅读的链接。
 
 
 这是一个**练习场**，因为您可以更改或添加代码以查看它是如何工作的，
