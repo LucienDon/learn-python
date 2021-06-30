@@ -1,48 +1,43 @@
-"""Reading and Writing Files
+"""读写文件
 
 @see: https://docs.python.org/3/tutorial/inputoutput.html#reading-and-writing-files
 
-The process of reading and writing to a file is like finding a book and opening a book.
-First, the file is located, opened to the first page, then reading/writing begins until it reaches
-the end of the file.
+读取和写入文件的过程就像找到一本书然后打开一本书。
+首先，定位文件，打开到第一页，然后读写开始，直到到达文件的末尾。
 """
 
 
 def test_files_open():
-    """Open files
+    """打开文件
 
-    open() returns a file object, and is most commonly used with two arguments:
-    open(filename, mode).
+    open() 返回一个文件对象，最常用的是带两个参数: open (filename, mode)。
 
-    The first argument is a string containing the filename. The second argument is another string
-    containing a few characters describing the way in which the file will be used. mode can be:
+    第一个参数是一个包含文件名的字符串。
+    第二个参数是另一个字符串，其中包含一些描述文件使用方式的字符。
+    模式可以是:
 
-    - 'r' when the file will only be read,
-    - 'w' for only writing (an existing file with the same name will be erased),
-    - 'a' opens the file for appending; any data written to the file is automatically added to end.
-    - 'r+' opens the file for both reading and writing.
+    - 'r' 当文件只被读取时,
+    - 'w' 对于仅写(将删除同名的现有文件)，
+    - 'a' 打开附加文件;写入文件的任何数据都会自动添加到文件末尾。
+    - 'r+' 打开文件进行读写。
 
-    The mode argument is optional; 'r' will be assumed if it’s omitted.
+    mode 参数是可选的; 如果省略，将假定为'r'。
 
-    Normally, files are opened in text mode, that means, you read and write strings from and to the
-    file, which are encoded in a specific encoding. If encoding is not specified, the default is
-    platform dependent (see open()). 'b' appended to the mode opens the file in binary mode: now
-    the data is read and written in the form of bytes objects. This mode should be used for all
-    files that don’t contain text.
+    通常，文件以文本模式打开，这意味着您从文件中读取和写入字符串，这些字符串以特定的编码方式编码。
+    如果没有指定编码，默认值是平台相关的(参见open())。
+    附加到 mode的'b'以二进制模式打开文件:现在数据以字节对象的形式读取和写入。
+    这种模式应该用于所有不包含文本的文件。
 
-    In text mode, the default when reading is to convert platform-specific line endings (\n on
-    Unix, \r\n on Windows) to just \n. When writing in text mode, the default is to convert
-    occurrences of \n back to platform-specific line endings. This behind-the-scenes modification
-    to file data is fine for text files, but will corrupt binary data like that in JPEG or EXE
-    files. Be very careful to use binary mode when reading and writing such files.
+    在文本模式下，读取时的默认值是将平台特定的行结束符(在Unix上是\n，在Windows上是\r\n)转换为仅\n。
+    当以文本模式写入时，默认是将出现的\n转换回特定于平台的行结束符。这种对文件数据的幕后修改对于文本文件来说没问题，
+    但是会破坏JPEG或EXE文件中的二进制数据。在读写这类文件时，要非常小心地使用二进制模式。
 
-    It is good practice to use the with keyword when dealing with file objects. The advantage is
-    that the file is properly closed after its suite finishes, even if an exception is raised at
-    some point. Using with is also much shorter than writing equivalent try-finally blocks:
+    在处理文件对象时，最好使用with关键字。这样做的好处是，即使在某个时刻引发了异常，文件在套件结束后也会被正确地关闭。
+    与写等效的try-finally块相比，Using with 要短得多:
     """
 
-    # Open files without using 'with' statement.
-    file = open('src/files/multi_line_file.txt', 'r')
+    # 不使用'with'语句打开文件。
+    file = open('multi_line_file.txt', 'r')
 
     assert not file.closed
 
@@ -58,8 +53,8 @@ def test_files_open():
 
     assert file.closed
 
-    # Open file using with.
-    with open('src/files/multi_line_file.txt', 'r') as file:
+    # 使用with打开文件。
+    with open('multi_line_file.txt', 'r') as file:
         read_data = file.read()
 
         assert read_data == (
@@ -70,8 +65,6 @@ def test_files_open():
 
     assert file.closed
 
-    # If you’re not using the with keyword, then you should call f.close() to close the file and
-    # immediately free up any system resources used by it. If you don’t explicitly close a file,
-    # Python’s garbage collector will eventually destroy the object and close the open file for you,
-    # but the file may stay open for a while. Another risk is that different Python implementations
-    # will do this clean-up at different times.
+    # 如果你不使用 with 关键字，那么你应该调用f.close()关闭文件， 并立即释放它使用的任何系统资源。如果你不显式地关闭一个文件，
+    # Python 的垃圾收集器将最终销毁该对象并为你关闭打开的文件，但该文件可能会保持打开一段时间。
+    # 另一个风险是，不同的Python实现将在不同的时间进行这种清理。

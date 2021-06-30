@@ -39,5 +39,4 @@ def fibonacci_smaller_than(limit):
 #
 # >>> python fibonacci.py 50
 if __name__ == '__main__':
-    import sys
-    print(fibonacci_smaller_than(int(sys.argv[1])))
+    print(fibonacci_smaller_than(1))

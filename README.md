@@ -100,7 +100,7 @@ def test_list_type():
     - [继承](src/classes/test_inheritance.py)
     - [多重继承](src/classes/test_multiple_inheritance.py)
 7. **组件**
-    - [组件](src/modules/test_modules.py) (`import` statement)
+    - [模块](src/modules/test_modules.py) (`import` statement)
     - [包](src/modules/test_packages.py)
 8. **错误和异常**
     - [处理异常](src/exceptions/test_handle_exceptions.py) (`try` statement)

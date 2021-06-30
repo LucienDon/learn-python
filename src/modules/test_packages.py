@@ -1,30 +1,21 @@
-"""Packages.
+"""包.
 
 @see: https://docs.python.org/3/tutorial/modules.html#packages
 
-Packages are a way of structuring Python’s module namespace by using “dotted module names”. For
-example, the module name A.B designates a submodule named B in a package named A. Just like the
-use of modules saves the authors of different modules from having to worry about each other’s
-global variable names, the use of dotted module names saves the authors of multi-module packages
-like NumPy or Pillow from having to worry about each other’s module names.
+包是一种通过使用“带点的模块名称”来构造Python模块名称空间的方法。
+例如，模块名A.B在名为A的包中指定了名为B的子模块。
+就像使用模块可以让不同模块的作者不必担心彼此的全局变量名一样，使用带点的模块名可以让多模块包(如NumPy或Pillow)的作者不必担心彼此的模块名。
 
-The __init__.py files are required to make Python treat the directories as containing packages;
-this is done to prevent directories with a common name, such as string, from unintentionally hiding
-valid modules that occur later on the module search path. In the simplest case, __init__.py can
-just be an empty file, but it can also execute initialization code for the package or set the
-__all__ variable, described later.
+需要__init__.py文件才能使 Python 将这些目录视为包含包; 这样做是为了防止具有公共名称(如字符串)的目录无意中隐藏了稍后在模块搜索路径上出现的有效模块。
+在最简单的情况下，__init__.py可以只是一个空文件，但它也可以为包执行初始化代码或设置__all__变量，稍后将进行描述。
 
-When the interpreter executes the import statement, it searches for module in a list of
-directories assembled from the following sources:
+当解释器执行import语句时，它会在从以下来源组装的目录列表中搜索module:
 
-- The directory from which the input script was run or the current directory if the interpreter is
-being run interactively
-- The list of directories contained in the PYTHONPATH environment variable, if it is set. (The
-format for PYTHONPATH is OS-dependent but should mimic the PATH environment variable.)
-- An installation-dependent list of directories configured at the time Python is installed
+- 在其中运行输入脚本的目录，如果解释器正在交互式地运行，则为当前目录
+- PYTHONPATH环境变量中包含的目录列表(如果设置了的话)。(PYTHONPATH的格式依赖于操作系统，但应该模仿PATH环境变量。)
+- 安装Python时配置的与安装相关的目录列表
 
-The resulting search path is accessible in the Python variable sys.path, which is obtained from a
-module named sys:
+得到的搜索路径可以在Python变量sys.path中访问。路径，该路径从名为sys的模块中获取。
 
 >>> import sys
 >>> sys.path
@@ -32,26 +23,24 @@ module named sys:
 @see: https://realpython.com/python-modules-packages/
 """
 
-# Users of the package can import individual modules from the package, for example.
+# 例如，包的用户可以从包中导入单个模块。
 import sound_package.effects.echo
 
-# An alternative way of importing the submodule is:
+# 另一种导入子模块的方法是:
 
 # pylint: disable=reimported
 from sound_package.effects import echo
 
-# Yet another variation is to import the desired function or variable directly:
+# 还有一种方法是直接导入需要的函数或变量:
 from sound_package.effects.echo import echo_function
 
-# Note that when using from package import item, the item can be either a submodule (or subpackage)
-# of the package, or some other name defined in the package, like a function, class or variable.
-# The import statement first tests whether the item is defined in the package; if not, it assumes
-# it is a module and attempts to load it. If it fails to find it, an ImportError exception is
-# raised.
 
-# Contrarily, when using syntax like import item.subitem.subsubitem, each item except for the last
-# must be a package; the last item can be a module or a package but can’t be a class or function or
-# variable defined in the previous item.
+# 请注意，当使用from package import item时，item可以是包的子模块(或子包)，也可以是包中定义的其他名称，如函数、类或变量。
+# import语句首先测试项是否在包中定义;如果不是，则假定它是一个模块并尝试加载它。
+# 如果没有找到，就会引发ImportError异常。
+
+# 相反，当使用类似import item.subitem的语法时。分子项，除最后一项外，每一项必须是一个包裹;
+# 最后一项可以是模块或包，但不能是前一项中定义的类、函数或变量。
 
 
 def test_packages():

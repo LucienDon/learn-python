@@ -62,11 +62,11 @@ def test_class_objects():
             self.imaginary = imaginary_part
 
         def get_real(self):
-            """Return real part of complex number."""
+            """返回复数的实部。"""
             return self.real
 
         def get_imaginary(self):
-            """Return imaginary part of complex number."""
+            """返回复数的虚部。"""
             return self.imaginary
 
     complex_number = ComplexNumberWithConstructor(3.0, -4.5)
