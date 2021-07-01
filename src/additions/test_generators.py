@@ -2,31 +2,28 @@
 
 @see: https://www.learnpython.org/en/Generators
 
-Generators are used to create iterators, but with a different approach. Generators are simple
-functions which return an iterable set of items, one at a time, in a special way.
+生成器用于创建迭代器，但采用了不同的方法。生成器是一个简单的函数，它以一种特殊的方式每次返回一个可迭代的项集。
 
-When an iteration over a set of item starts using the for statement, the generator is run. Once the
-generator's function code reaches a "yield" statement, the generator yields its execution back to
-the for loop, returning a new value from the set. The generator function can generate as many
-values (possibly infinite) as it wants, yielding each one in its turn.
+当使用for语句开始对一组项进行迭代时，将运行生成器。
+一旦生成器的函数代码到达“yield”语句， 生成器将其执行返回给for循环，并从集合返回一个新值。
+生成器函数可以生成任意多的值(可能是无限)，并依次生成每个值。
 """
 
 import random
 
 
 def lottery():
-    """Generator function example.
+    """生成器函数的例子。
 
-    Here is a simple example of a generator function which returns random integers.
-    This function decides how to generate the random numbers on its own, and executes the yield
-    statements one at a time, pausing in between to yield execution back to the main for loop.
+    下面是一个返回随机整数的生成器函数的简单示例。
+    这个函数决定如何自己生成随机数， 一次一个地执行yield语句， 在两个循环之间暂停，使执行返回主for循环。
     """
-    # returns first 3 random numbers between 1 and 10
+    # 返回1到10之间的前3个随机数字
     # pylint: disable=unused-variable
     for i in range(3):
         yield random.randint(1, 10)
 
-    # returns a 4th number between 10 and 20
+    # 返回10到20之间的第4个数字
     yield random.randint(10, 20)
 
 

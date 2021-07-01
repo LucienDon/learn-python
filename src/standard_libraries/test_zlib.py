@@ -1,8 +1,8 @@
-"""Data Compression.
+""" 数据压缩
 
 @see: https://docs.python.org/3/tutorial/stdlib.html#data-compression
 
-Common data archiving and compression formats are directly supported by modules including: zlib,
+常见的数据归档和压缩格式由以下模块直接支持: zlib,
 gzip, bz2, lzma, zipfile and tarfile.
 """
 
